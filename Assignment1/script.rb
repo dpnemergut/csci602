@@ -1,7 +1,7 @@
 # Assignment 1
 # Collaborators:
 #  Daniel Nemergut
-#  Garrett
+#  Garrett Stauber
 #  Clint
 
 # Define a method sum which takes an array of integers as an argument
