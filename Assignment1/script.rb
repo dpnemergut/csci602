@@ -36,9 +36,9 @@ puts "Sum should be 9"$
 # should both return false.
 
 def sum_to_n?(array, n)
-  for 0..array.length - 1
-    for 0..array.length - 2
-      if array[x] + array[y] == n
+  for i in 0..array.length - 2
+    for j in i+1..array.length - 1
+      if array[i] + array[j] == n
         return true
       end
     end
