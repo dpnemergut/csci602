@@ -17,7 +17,7 @@ def sum(array)
   return sum
 end
 
-raise 'sum([]} != 0' unless sum([]) == 0
+raise 'sum([]) != 0' unless sum([]) == 0
 raise 'sum([1,2]) != 3' unless sum([1,2]) == 3
 raise 'sum([4,5,6,7]) != 22' unless sum([4,5,6,7]) == 22
 
@@ -26,15 +26,16 @@ raise 'sum([4,5,6,7]) != 22' unless sum([4,5,6,7]) == 22
 # should return zero. For an array with just one element, it should return
 # that element.
 def max_2_sum(int_array)
+  return 0 if int_array.size == 0
+  return int_array[0] if int_array.size == 1
+
   int_array.sort!
-  return (int_array[int_array.length - 2] + int_array[int_array.length - 1])$
+  return (int_array[int_array.length - 2] + int_array[int_array.length - 1])
 end
 
-array = [1,2,3,4,5]
-
-sum = max_2_sum(array)
-puts "Sum is #{sum}"$
-puts "Sum should be 9"$
+raise 'max_2_sum([]) != 0' unless max_2_sum([]) == 0
+raise 'max_2_sum([4]) != 4' unless max_2_sum([4]) == 4
+raise 'max_2_sum([1,2,3,4,5]) != 9' unless max_2_sum([1,2,3,4,5]) == 9
 
 
 # Define a method sum_to_n? which takes an array of integers and an additional
