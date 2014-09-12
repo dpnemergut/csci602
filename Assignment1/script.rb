@@ -8,11 +8,18 @@
 # and returns the sum of its elements. For an empty array it should
 # return zero.
 def sum(array)
-  return 0
+  sum = 0
+
+  array.each { |number|
+    sum += number
+  }
+
+  return sum
 end
 
-raise 'sum([]} != 0' unless sum([]) == 0$
-raise 'sum([1,2]) != 3' unless sum([1,2]) == 3$
+raise 'sum([]} != 0' unless sum([]) == 0
+raise 'sum([1,2]) != 3' unless sum([1,2]) == 3
+raise 'sum([4,5,6,7]) != 22' unless sum([4,5,6,7]) == 22
 
 # Define a method max_2_sum which takes an array of integers as an argument
 # and returns the sum of its two largest elements. For an empty array it
@@ -36,7 +43,7 @@ puts "Sum should be 9"$
 # should both return false.
 
 def sum_to_n?(array, n)
-#error handling if array.length<2  
+#error handling if array.length<2
   for i in 0..array.length - 2
     for j in i+1..array.length - 1
       if array[i] + array[j] == n
