@@ -44,15 +44,18 @@ raise 'max_2_sum([1,2,3,4,5]) != 9' unless max_2_sum([1,2,3,4,5]) == 9
 # should both return false.
 
 def sum_to_n?(array, n)
-#error handling if array.length<2
+  return false if array.length < 2
+
   for i in 0..array.length - 2
     for j in i+1..array.length - 1
-      if array[i] + array[j] == n
-        return true
-      end
+      return true if array[i] + array[j] == n
     end
+  end
+
   return false
 end
 
-has_sum = sum_to_n?(array, 9)
-puts "Has sum equals #{has_sum}"
+raise 'sum_to_n?([], 0) != false' unless sum_to_n?([], 0) == false
+raise 'sum_to_n?([22], 22) != false' unless sum_to_n?([22], 22) == false
+raise 'sum_to_n?([7,4,3,0], 32) != false' unless sum_to_n?([7,4,3,0], 32) == false
+raise 'sum_to_n?([7,4,3,0], 7) != true' unless sum_to_n?([7,4,3,0], 7) == true
