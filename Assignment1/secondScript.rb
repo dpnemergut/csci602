@@ -43,6 +43,27 @@ def starts_with_consonant?(s = '')
   return true
 end
 
+#def starts_with_constant?(s)
+#    if (!s.is_a? String)
+#        return false
+#    end
+#    s.upcase!
+#    case s[0]
+#    when "A"
+#        return true
+#    when "E"
+#        return true
+#    when "I"
+#        return true
+#    when "O"
+#        return true
+#    when "U"
+#        return true
+#    else
+#        return false
+#    end
+#end
+
 #raise 'Incorrect edge case' unless starts_with_consonant?() == false
 #raise 'Does not reject numbers' unless starts_with_consonant?(1) == false
 #raise 'Does not accept consonants' unless starts_with_consonant?('sup') == true
