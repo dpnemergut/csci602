@@ -19,7 +19,7 @@ class BookInStock
 
   def initialize(isbn = '', price = 0)
     raise ArgumentError unless isbn != ''
-    raise ArgumentError unless price.is_a? Numeric
+    raise ArgumentError unless price.is_a?(Numeric)
     raise ArgumentError unless price > 0
 
     @isbn = isbn
