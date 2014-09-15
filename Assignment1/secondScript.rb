@@ -28,3 +28,14 @@ raise 'Incorrect edge case' unless starts_with_consonant?() == false
 raise 'Does not reject numbers' unless starts_with_consonant?(1) == false
 raise 'Does not reject consonants' unless starts_with_consonant?('sup') == false
 raise 'Does not accept vowels' unless starts_with_consonant?('every') == true
+
+# Define a method binary_multiple_of_4?(s) that takes a string and
+# returns true if the string represents a binary number that is a multiple of 4.
+# NOTE: be sure it returns false if the string is not a valid binary number!
+
+def binary_multiple_of_4?(s = '')
+
+  return false if s !~ /[01]/
+end
+
+raise 'Accepts letters' unless binary_multiple_of_4?('01ST') == false
