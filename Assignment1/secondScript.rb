@@ -14,6 +14,23 @@ end
 #raise 'Incorrect edge case' unless hello() == 'Hello, '
 #raise 'Incorrect string' unless hello('John') == 'Hello, John'
 
+#CM - Alternate method
+#def hello(name)
+#  if (!name.is_a? String)
+#    return "Is not a string"
+#  else
+#     return "Hello, #{name}"
+#   end
+# end
+
+#test = hello(123)$
+#puts "#{test}"$
+
+#raise 'Incorrect string' unless hello(123) == 'Is not a string'$
+#raise 'Incorrect string' unless hello('Clint') == 'Hello, Clint'$
+#END Alternate method
+
+
 # Define a method starts_with_consonant?(s) that takes a string and
 # returns true if it starts with a consonant and false otherwise.
 # (For our purposes, a consonant is any letter other than A, E, I, O, U.)
