@@ -1,4 +1,4 @@
-module FunWithStrings
+#module FunWithStrings
   def palindrome?(str)
 	test_str = str
     	test_str.delete!(" ")
@@ -9,18 +9,19 @@ module FunWithStrings
 	return false
 	end
   end
-
-def count_words
+bool = palindrome?("Race Car")
+puts bool
+#  def count_words
     # your code here
-end
+#  end
 
-def anagram_groups
+#  def anagram_groups
     # your code here
-end
-end
+#  end
+#end
 
 # make all the above functions available as instance methods on Strings:
 
-class String
- 	include FunWithStrings
-end
+#class String
+ # 	include FunWithStrings
+#end
