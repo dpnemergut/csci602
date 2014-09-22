@@ -3,7 +3,9 @@ class RockPaperScissors
   # Exceptions this class can raise:
   class NoSuchStrategyError < StandardError ; end
 
-  def self.winner(player1, player2)
+  def self.winner(players)
+    player1 = players[0]
+    player2 = players[1]
     options = ["R", "P", "S"]
 
     # Test that arrays are correct
@@ -11,25 +13,43 @@ class RockPaperScissors
     raise NoSuchStrategyError, "Strategy must be one of R,P,S" unless noErrors
 
     if(player2[1] == "R" && player1[1] == "S")
-      winner = player2
+      champ = player2
     elsif(player2[1] == "P" && player1[1] == "R")
-      winner = player2
+      champ = player2
     elsif(player2[1] == "S" && player1[1] == "P")
-      winner = player2
+      champ = player2
     else
-      winner = player1
+      champ = player1
     end
 
-    return winner
+    return champ
   end
 
   def self.tournament_winner(tournament)
-    # YOUR CODE HERE
+    # Check if we're at the lowest level
+    if(tournament[0][0].is_a? String)
+      return winner(tournament)
+    end
+
+    # Recursively call this until we get to the lowest level
+    return winner([tournament_winner(tournament[0]), tournament_winner(tournament[1])])
   end
 
 end
 
 # Tests
-p1 = ["BunA", "R"]
-p2 = ["BunB", "P"]
-puts RockPaperScissors.winner(p1, p2)
+#p1 = ["BunA", "R"]
+#p2 = ["BunB", "P"]
+#puts RockPaperScissors.winner(p1, p2)
+
+#tourney = [
+#    [
+#        [ ["Armando", "P"], ["Dave", "S"] ],
+#        [ ["Richard", "R"],  ["Michael", "S"] ],
+#    ],
+#    [
+#        [ ["Allen", "S"], ["Omer", "P"] ],
+#        [ ["David E.", "R"], ["Richard X.", "P"] ]
+#    ]
+#]
+#puts RockPaperScissors.tournament_winner(tourney)
