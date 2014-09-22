@@ -1,27 +1,29 @@
-#module FunWithStrings
-  def palindrome?(str)
-	test_str = str
-    	test_str.delete!(" ")
+module FunWithStrings
+  def palindrome?
+	test_str = self
+	test_str = test_str.gsub(/\W/, '') unless test_str.gsub(/\W+/, '')==nil
 	test_str.downcase!
 	if test_str == test_str.reverse
 	return true
 	else
 	return false
 	end
-  end
-bool = palindrome?("Race Car")
-puts bool
-#  def count_words
-    # your code here
-#  end
 
-#  def anagram_groups
+  end
+
+def count_words
     # your code here
-#  end
-#end
+end
+
+def anagram_groups
+    # your code here
+end
+end
 
 # make all the above functions available as instance methods on Strings:
 
-#class String
- # 	include FunWithStrings
-#end
+class String
+ 	include FunWithStrings
+end
+
+

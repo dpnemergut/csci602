@@ -13,7 +13,7 @@ describe 'palindrome detection'
     'A man, a plan, a canal -- Panama'.should be_a_palindrome
     "Madam, I'm Adam!".should be_a_palindrome
   end    
-end
+$end
 
 describe 'word count', :pending => true do
   it 'should return a hash [5 points]' do
