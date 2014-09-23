@@ -3,9 +3,7 @@ class RockPaperScissors
   # Exceptions this class can raise:
   class NoSuchStrategyError < StandardError ; end
 
-  def self.winner(players)
-    player1 = players[0]
-    player2 = players[1]
+  def self.winner(player1, player2)
     options = ["R", "P", "S"]
 
     # Test that arrays are correct
@@ -28,28 +26,28 @@ class RockPaperScissors
   def self.tournament_winner(tournament)
     # Check if we're at the lowest level
     if(tournament[0][0].is_a? String)
-      return winner(tournament)
+      return winner(tournament[0], tournament[1])
     end
 
     # Recursively call this until we get to the lowest level
-    return winner([tournament_winner(tournament[0]), tournament_winner(tournament[1])])
+    return winner(tournament_winner(tournament[0]), tournament_winner(tournament[1]))
   end
 
 end
 
 # Tests
-#p1 = ["BunA", "R"]
-#p2 = ["BunB", "P"]
-#puts RockPaperScissors.winner(p1, p2)
+p1 = ["BunA", "R"]
+p2 = ["BunB", "P"]
+puts RockPaperScissors.winner(p1, p2)
 
-#tourney = [
-#    [
-#        [ ["Armando", "P"], ["Dave", "S"] ],
-#        [ ["Richard", "R"],  ["Michael", "S"] ],
-#    ],
-#    [
-#        [ ["Allen", "S"], ["Omer", "P"] ],
-#        [ ["David E.", "R"], ["Richard X.", "P"] ]
-#    ]
-#]
-#puts RockPaperScissors.tournament_winner(tourney)
+tourney = [
+    [
+        [ ["Armando", "P"], ["Dave", "S"] ],
+        [ ["Richard", "R"],  ["Michael", "S"] ],
+    ],
+    [
+        [ ["Allen", "S"], ["Omer", "P"] ],
+        [ ["David E.", "R"], ["Richard X.", "P"] ]
+    ]
+]
+puts RockPaperScissors.tournament_winner(tourney)
