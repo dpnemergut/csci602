@@ -16,8 +16,9 @@ class Class
         # add to history
         if(@#{attr_history}.nil?)
           @#{attr_history} = [nil] if @#{attr_history}.nil?
+        else
+          @#{attr_history} << @#{attr_name}
         end
-        @#{attr_history} << val
 
         # set the value itself
         @#{attr_name}=val
@@ -28,22 +29,19 @@ class Class
 end
 
 # Tests
-"""class Foo
-  attr_accessor_with_history :bar
-end
+#class TestClass1
+#  attr_accessor_with_history :foo
+#end
+#class TestClass2
+#  attr_accessor_with_history 'foo'
+#end
 
-f = Foo.new
-f.bar = 3
-f.bar = :wowzo
-f.bar = 'boo!'
+#obj1 = TestClass1.new
+#obj2 = TestClass2.new
+#obj1.foo = :x
+#obj1.foo = :y
+#obj2.foo = 1
+#obj2.foo = 2
 
-g = Foo.new
-g.bar = 4
-g.bar = :dude
-g.bar = 'cool!'
-
-puts f.bar
-puts g.bar
-puts f.bar_history
-puts g.bar_history
-"""
+#puts obj1.foo_history
+#puts obj2.foo_history
