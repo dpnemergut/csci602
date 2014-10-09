@@ -7,8 +7,20 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.find(:all, :order => params[:sort_by])
-    instance_variable_set("@hilite_" + params[:sort_by], "hilite") if(params[:sort_by] != nil)
+    @all_ratings = Movie.all_ratings
+    @selected_ratings = params[:ratings] || session[:ratings] || Hash[@all_ratings.collect { |r| [r, r] }]
+
+    sort = params[:sort_by] || session[:sort_by]
+    if(params[:sort_by] != session[:sort_by] || params[:ratings] != session[:ratings])
+      session[:sort_by] = params[:sort_by] || session[:sort_by]
+      session[:ratings] = @selected_ratings
+      flash.keep
+      redirect_to :sort_by => sort, :ratings => @selected_ratings and return
+    end
+
+    @movies = Movie.find_all_by_rating(@selected_ratings.keys, :order => params[:sort_by])
+
+    instance_variable_set("@" + params[:sort_by] + "_header", "hilite") if(params[:sort_by] != nil)
   end
 
   def new
