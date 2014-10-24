@@ -15,7 +15,8 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  flunk "Unimplemented"
+  assert page.body =~ /#{e1}.*#{e2}/m, "#{e1} was not before #{e2}"
+  #flunk "Unimplemented"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -45,5 +46,14 @@ Then /I should (not )?see the following movies: (.*)/ do |not_see, movie_list|
   movies = movie_list.split(',')
   movies.each do |movie|
     step %Q{I should #{not_see }see "#{movie}"}
+  end
+end
+
+Then /^I should see all movies sorted by (.*) in ([^\s}]+) order$/ do |sort_by, order|
+  sort_method = sort_by.gsub(/ /,'_')
+  field_values = Movie.all.map{|x| x.send(sort_method)}.sort
+  field_values.reverse! if order == 'descending'
+  field_values.each_cons(2) do |a,b|
+    step %Q(I should see "#{a}" before "#{b}")
   end
 end
